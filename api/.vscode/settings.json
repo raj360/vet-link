@@ -1,0 +1,5 @@
+{
+  "namespaceResolver.sortOnSave": true,
+  "files.autoSave": "afterDelay",
+  "namespaceResolver.highlightOnSave": true
+}
