@@ -20,7 +20,6 @@ const storeFS =async ({ stream, filename }) => {
     );
 }
 
-
 module.exports = {
   name:()=> 'my name is is Willsley 💡 ',
   singleUpload:async (parent,{file},context)=>{
@@ -34,8 +33,10 @@ module.exports = {
  return fileLocation;
 
 },
+
 farmerSignUp:async(parent,{fullName,telephone,email,profilePhoto,password},{models})=>{
  
+
    try {
     if(profilePhoto){
     //saving image to file system

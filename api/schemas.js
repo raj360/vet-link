@@ -10,6 +10,8 @@ module.exports = gql`
    getFarmer(id:Int!):Farmer!,
  }
 
+
+
   type Mutation{
   name:String,
   singleUpload(file:Upload):String!,
@@ -29,7 +31,7 @@ type Response{
   error:Boolean!,
   message:String!
 }
-
+  
 type File{
   filename: String!
   mimetype: String!
