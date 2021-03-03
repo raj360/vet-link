@@ -9,7 +9,6 @@ const {ApolloServer} = require('apollo-server-express');
 const typeDefs = require('./schemas');
 const resolvers = require('./resolvers');
 
-
 const server = new ApolloServer({
   typeDefs,
   resolvers,
@@ -25,4 +24,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'uploads/profile-photos/')));
+
 module.exports = {app,server};
+
+

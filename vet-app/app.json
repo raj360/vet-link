@@ -1,0 +1,29 @@
+{
+  "expo": {
+    "name": "VetLink for farmers",
+    "slug": "for vets",
+    "privacy": "public",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "version": "1.6.0",
+    "orientation": "portrait",
+    "icon": "./assets/emergency-512.png",
+    "splash": {
+      "image": "./assets/splashBg.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "description": "This app allows Farmers easily reach out to the nearest local Veterinarians in their regions"
+  }
+}
