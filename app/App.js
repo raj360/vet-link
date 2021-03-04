@@ -21,7 +21,6 @@ enableScreens();
 import Screens from "./navigation/Screens";
 import { Images, articles, argonTheme } from "./constants";
 import { UserProvider } from "./context/UserContext";
-import { getData } from "./user";
 
 
 
@@ -52,16 +51,6 @@ function cacheImages(images) {
 export default props => {
 
 
-   const [data,setData]= React.useState()
-  
-
-    React.useEffect(()=> {
-       getData('USER_DATA').then(setData)
-      .catch(err => console.log(err))
-     return 
-    },[data]);
-
-  
 
   const [isLoadingComplete, setLoading] = useState(false);
   let [fontsLoaded] = useFonts({
@@ -95,7 +84,7 @@ export default props => {
         <GalioProvider theme={argonTheme}>
           <Block flex>
            <ApolloProvider client={client}>
-              <UserProvider value={data}>
+              <UserProvider>
                 <Screens/>
               </UserProvider>
            </ApolloProvider>

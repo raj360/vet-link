@@ -8,34 +8,27 @@ import {
   Platform
 } from "react-native";
 import { Block, Text, theme } from "galio-framework";
-
+import {useQuery} from '@apollo/client';
 import { Button } from "../components";
 import { Images, argonTheme } from "../constants";
 import { HeaderHeight } from "../constants/utils";
-import {getData} from "../user/index";
+import useUserState,{ActionTypes} from "../context/UserContext";
+import { USER } from "../graphql/queries";
 const { width, height } = Dimensions.get("screen");
+
 
 const thumbMeasure = (width - 48 - 32) / 3;
 
 const  Profile = ({navigation,route})=>  {
+  const [state,dispatch] =  useUserState();
 
-  console.log(route)
+    const  {user} = state;
 
+    const {data,loading,error} = useQuery(USER,{variables:{id:user.id}})
 
-   const [data,setData] = React.useState({})
-
-   React.useEffect(()=> {
-
-    //  navigation.setParams({userId:null})
-
-     getData('USER_DATA').then(user =>setData({...user}) )
-     .catch((err) => {
-       console.log('Error occured')
-     });
-
-   },[data])
-
-  
+    React.useEffect(()=> {
+        
+    });
 
     return (
       <Block flex style={styles.profile}>
@@ -129,10 +122,10 @@ const  Profile = ({navigation,route})=>  {
                 <Block flex>
                   <Block middle style={styles.nameInfo}>
                     <Text bold size={28} color={argonTheme.COLORS.FONTS}>
-                    {data.fullName}
+                    {user.fullName}
                     </Text>
                     <Text size={16} color={argonTheme.COLORS.FONTS} style={{ marginTop: 10 }}>
-                     {data.email}
+                     {user.email}
                     </Text>
                   </Block>
                   <Block middle style={{ marginTop: 30, marginBottom: 16 }}>

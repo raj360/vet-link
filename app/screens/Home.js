@@ -5,14 +5,19 @@ import { ArticleCard, Card } from '../components';
 import HomeHeader from '../components/HomeHeader';
 const { width } = Dimensions.get('screen');
 import {argonTheme,Images} from '../constants';
-import UserContext from '../context/UserContext';
+import useUserState,{ActionTypes,Actions} from '../context/UserContext';
+import { getData } from '../user';
 
- const Home = ({navigation})=>  {
-     
-  const user = useContext(UserContext)
+ const Home = ({navigation}) =>  {
+  const [state,dispatch] =  useUserState();
+  
+    React.useEffect(()=> {
+       getData('USER_DATA').then(user =>  dispatch(Actions.saveUser(user)))
+      .catch(err => console.log(err))
+    },[state]);
 
-   console.log(user);
-    
+
+
     return (
       <Block flex center style={styles.home}>
         <ScrollView
@@ -23,14 +28,14 @@ import UserContext from '../context/UserContext';
         <Block  flex>
           <Block flex row>
              <HomeHeader 
-             handleSelectedItem={()=>navigation.navigate('Profile',{user:4})}
+             handleSelectedItem={()=>navigation.navigate('Profile',)}
              image={Images.NoteIcon}
              title = "Profile"
              />
 
 
              <HomeHeader
-             handleSelectedItem={()=>navigation.navigate('Find Vet',{userId:2})}
+             handleSelectedItem={()=>navigation.navigate('Find Vet',)}
              image={Images.Veterinarian}
              title ="Veterinarians"
              />
