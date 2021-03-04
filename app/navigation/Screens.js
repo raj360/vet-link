@@ -306,8 +306,6 @@ function AppStack(props) {
       <Drawer.Screen name="SignIn" component={SignIn} />
       <Drawer.Screen name="SignUp" component={SignUp} />
       <Drawer.Screen name="Elements" component={ElementsStack} />
-
-      
     </Drawer.Navigator>
   );
 }

@@ -6,6 +6,7 @@ import {Images,argonTheme} from '../constants';
 import { withNavigation } from '@react-navigation/compat';
 import PropTypes from 'prop-types';
 
+
 // create a component
 const ArticleCard = (props) => {
     const { navigation, item, horizontal, full, style, ctaColor, imageStyle,image } = props;
@@ -15,7 +16,7 @@ const ArticleCard = (props) => {
       imageStyle
     ];
 
-          const cardContainer = [styles.card, styles.shadow, style];
+     const cardContainer = [styles.card, styles.shadow, style];
 
      const imgContainer = [styles.imageContainer,
       horizontal ? styles.horizontalStyles : styles.verticalStyles,

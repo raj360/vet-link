@@ -29,7 +29,6 @@ async function getLocationAsync() {
 const FindVet = (props) => {
   let map = React.createRef();
 
-  console.log('Props from Map',props)
 
   const [region, setRegion] = useState({
     latitude: 0.3565617,
@@ -85,7 +84,6 @@ const FindVet = (props) => {
     </View>
   );
 };
-
 
 // define your styles
 const styles = StyleSheet.create({

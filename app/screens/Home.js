@@ -5,7 +5,7 @@ import { ArticleCard, Card } from '../components';
 import HomeHeader from '../components/HomeHeader';
 const { width } = Dimensions.get('screen');
 import {argonTheme,Images} from '../constants';
-import useUserState,{ActionTypes,Actions} from '../context/UserContext';
+import useUserState,{Actions} from '../context/UserContext';
 import { getData } from '../user';
 
  const Home = ({navigation}) =>  {

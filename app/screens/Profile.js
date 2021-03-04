@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 import {
   StyleSheet,
   Dimensions,
@@ -12,23 +12,37 @@ import {useQuery} from '@apollo/client';
 import { Button } from "../components";
 import { Images, argonTheme } from "../constants";
 import { HeaderHeight } from "../constants/utils";
-import useUserState,{ActionTypes} from "../context/UserContext";
+import useUserState,{Actions} from "../context/UserContext";
 import { USER } from "../graphql/queries";
+import FarmList from "../components/FarmList";
+import * as Permissions from 'expo-permissions';
 const { width, height } = Dimensions.get("screen");
 
 
 const thumbMeasure = (width - 48 - 32) / 3;
 
 const  Profile = ({navigation,route})=>  {
+
+
   const [state,dispatch] =  useUserState();
+    
+
 
     const  {user} = state;
 
     const {data,loading,error} = useQuery(USER,{variables:{id:user.id}})
 
     React.useEffect(()=> {
-        
-    });
+        if(data && !loading){
+          const {appointments,farms} = data.getFarmer;
+          dispatch(Actions.saveAppointments(appointments))
+          dispatch(Actions.saveFarms(farms))
+        }else{
+          alert(`Server can't be reached`);
+        }
+    },[data]);
+
+
 
     return (
       <Block flex style={styles.profile}>
@@ -46,7 +60,7 @@ const  Profile = ({navigation,route})=>  {
                 <Block middle style={styles.avatarContainer}>
                   
                   <Image
-                    source={{ uri: Images.ProfilePicture }}
+                    source={{ uri: `http://10.0.2.2:4000/${user.photo}`}}
                     style={styles.avatar}
                   />
                 </Block>
@@ -91,7 +105,7 @@ const  Profile = ({navigation,route})=>  {
                         color="#525F7F"
                         style={{ marginBottom: 4 }}
                       >
-                        0
+                      {state.farms.length}
                       </Text>
                       <Text size={12} color={argonTheme.COLORS.TEXT}>Farms</Text>
                     </Block>
@@ -102,7 +116,7 @@ const  Profile = ({navigation,route})=>  {
                         size={18}
                         style={{ marginBottom: 4 }}
                       >
-                       0
+                       {state.appointments.length}
                       </Text>
                       <Text size={12} color={argonTheme.COLORS.TEXT}>Appointments</Text>
                     </Block>
@@ -140,24 +154,14 @@ const  Profile = ({navigation,route})=>  {
                     <Text bold size={16} color={argonTheme.COLORS.FONTS} style={{marginTop: 12}}>
                     Farms
                     </Text>
-                    <Button
-                      small
-                     style={{ backgroundColor: argonTheme.COLORS.SECONDARY }}
-                      textStyle={{ color: "#FFFFFF", fontSize: 12, marginLeft: 24 }}
-                    >
-                      View all
-                    </Button>
                   </Block>
                   <Block style={{ paddingBottom: -HeaderHeight * 2 }}>
                     <Block row space="between" style={{ flexWrap: "wrap" }}>
-                      {/* {Images.Viewed.map((img, imgIndex) => (
-                        <Image
-                          source={{ uri: img }}
-                          key={`viewed-${img}`}
-                          resizeMode="cover"
-                          style={styles.thumb}
-                        />
-                      ))} */}
+           
+                   {
+                     data ? <FarmList farms={data.getFarmer.farms} /> : <Text>You do not have any farms</Text>
+                   }
+
                     </Block>
                   </Block>
                 </Block>

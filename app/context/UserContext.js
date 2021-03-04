@@ -8,14 +8,27 @@ const UserDispatcherContext = React.createContext();
 
 export const UserConsumer = UserContext.Consumer;
 
- const  reducer = (state,action)=>{
+const initialState = {
+  user:null,
+  isLoggedIn:false,
+  appointments:[],
+  farms:[]
+}
+
+ const  reducer = (state=initialState,action)=>{
 
   switch(action.type){
   case ActionTypes.SAVE_USER:{
-    return {user:action.payload,isLoggedIn:true}
+    return {...state,user:action.payload,isLoggedIn:true}
   }
   case ActionTypes.REMOVE_USER:{
-    return {user:null,isLoggedIn:false}
+    return {...state,user:null,isLoggedIn:false}
+  }
+  case ActionTypes.SAVE_APPOINTMENTS:{
+    return {...state,appointments:action.payload}
+  }
+  case ActionTypes.SAVE_FARMS:{
+    return {...state,farms:action.payload}
   }
   default:{
     throw new Error();
@@ -24,12 +37,7 @@ export const UserConsumer = UserContext.Consumer;
   }
 }
 
-const initialState = {
-  user:null,
-  isLoggedIn:false,
-  appointments:[],
-  farms:[]
-}
+
 
 export const UserProvider =({children})=> {
 
@@ -65,9 +73,7 @@ export const Actions = {
   logoutUser:() => ({type:ActionTypes.REMOVE_USER}),
   saveAppointments:(data) => ({type:ActionTypes.SAVE_APPOINTMENTS,payload:data}),
   saveFarms:(data) => ({type:ActionTypes.SAVE_FARMS,payload:data})
-
 }
-
 
 
 export default useUserState;
