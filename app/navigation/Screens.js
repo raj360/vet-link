@@ -18,6 +18,8 @@ import SignIn from '../screens/SignIn';
 import SignUp from '../screens/SignUp';
 import FindVet from '../screens/FindVet';
 import Chat from '../screens/Chat';
+import Appointments from '../screens/Appointments';
+import VetDetailsPage from "../screens/VetDetailsPage";
 
 
 // drawer
@@ -26,6 +28,7 @@ import CustomDrawerContent from "./Menu";
 // header for screens
 import { Icon, Header } from "../components";
 import { argonTheme, tabs } from "../constants";
+
 
 
 const { width } = Dimensions.get("screen");
@@ -76,8 +79,6 @@ function ElementsStack(props) {
           cardStyle: { backgroundColor: "#F8F9FE" }
         }}
       />
-
-
           <Stack.Screen
          name="Pro"
         component={Pro}
@@ -153,7 +154,65 @@ function ProfileStack(props) {
           headerTransparent: true
         }}
       />
-            <Stack.Screen
+
+        <Stack.Screen
+        name="Appointments"
+        component={Appointments}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Appointments"
+              back
+              bgColor={argonTheme.COLORS.SECONDARY}
+              white
+              transparent
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          headerTransparent: true
+        }}
+      />
+
+       <Stack.Screen
+        name="Farms"
+        component={Appointments}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Farms"
+              back
+              bgColor={argonTheme.COLORS.SECONDARY}
+              white
+              transparent
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          headerTransparent: true
+        }}
+      />
+
+      <Stack.Screen
+        name="VetDetails"
+        component={VetDetailsPage}
+        options={{
+          header: ({ navigation, scene }) => (
+            <Header
+              title="Farms"
+              back
+              bgColor={argonTheme.COLORS.SECONDARY}
+              white
+              transparent
+              navigation={navigation}
+              scene={scene}
+            />
+          ),
+          headerTransparent: true
+        }}
+      />
+
+        <Stack.Screen
         name="Pro"
         component={Pro}
         options={{

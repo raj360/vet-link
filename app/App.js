@@ -15,7 +15,6 @@ const client = new ApolloClient({
 // Before rendering any navigation stack
 import { enableScreens } from "react-native-screens";
 
-
 enableScreens();
 
 import Screens from "./navigation/Screens";

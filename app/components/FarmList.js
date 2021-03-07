@@ -8,13 +8,13 @@ import {Images,argonTheme} from '../constants';
 const {width, height} = Dimensions.get('window')
 
 const ASPECT_RATIO = width / height
-const LATITUDE_DELTA = 0.005
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO
+const LATITUDE_DELTA = 0.922
+const LONGITUDE_DELTA = LATITUDE_DELTA + ASPECT_RATIO
 
 
 async function getLocationAsync() {
 //Location.getCurrentPositionAsync({ enableHighAccuracy: true })
-  const { status, permissions } = await Permissions.askAsync(Permissions.LOCATION);
+  const { status, permissions} = await Permissions.askAsync(Permissions.LOCATION);
   if (status === 'granted') {
     return 'granted';
   } else {
@@ -28,13 +28,15 @@ const FarmList = (props) => {
    
    const {farms} = props;
 
-   console.log('farm lits',farms)
+   
 
   const [region, setRegion] = useState({
     latitude: 0.3565617,
     longitude:32.6366883,
    
 })
+
+
    const { navigation, item, horizontal, full, style, ctaColor, imageStyle,image } = props;
 
     const imageStyles = [
@@ -49,13 +51,13 @@ const FarmList = (props) => {
       styles.shadow
     ];
 
-
   return (
    <Block row={horizontal} card flex style={cardContainer}>
 
         <Block flex style={imgContainer}>
          <View style={imageStyles}>
          <MapView
+           ref={ref => (map = ref)}
           provider={PROVIDER_GOOGLE}
           style={styles.map}
           showsUserLocation={true}

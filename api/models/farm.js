@@ -40,6 +40,10 @@ module.exports = function(sequelize, DataTypes) {
         model: 'animalType',
         key: 'id'
       }
+    },
+    town: {
+      type: DataTypes.STRING(20),
+      allowNull: true
     }
   }, {
     sequelize,

@@ -11,7 +11,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     status: {
       type: DataTypes.ENUM('PENDING','CONFIMED','CANCELLED','APPROVED'),
-      allowNull: true
+      allowNull: true,
+      defaultValue: "PENDING"
     },
     farmerId: {
       type: DataTypes.INTEGER,

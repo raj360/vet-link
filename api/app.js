@@ -26,5 +26,3 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'uploads/profile-photos/')));
 
 module.exports = {app,server};
-
-

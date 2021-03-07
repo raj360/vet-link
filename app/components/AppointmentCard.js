@@ -6,37 +6,33 @@ import {Images,argonTheme } from '../constants';
 import {Button} from '../components';
 const { width } = Dimensions.get("screen");
 
-const AppointmentCard = ({fullName,farm,district,town,category}) => {
+const AppointmentCard = ({fullName,status,district,town,specialization,handleOnClick}) => {
 
   const cardContainer = [styles.card, styles.shadow,styles.container]
-
   return (
-   <Block flex  card style={cardContainer}>
-    <Block flex row >
+   <Block flex center  card style={cardContainer}>
+    <Block flex row>
        <Block>
        <Image style={styles.image}  source={Images.ProfileBackground}/>
      </Block>
      <Block flex style={{marginLeft:'10%'}}>
         <Text h6 bold>{fullName}</Text>
-         <Text color={argonTheme.COLORS.PLACEHOLDER}>{district} - {town} </Text>
-          <Text> {farm} </Text>
-           <Text>{category} </Text>
+         <Text color={argonTheme.COLORS.PLACEHOLDER}> {status} </Text>
+           <Text>{district} - {town} </Text>
+           <Text>{specialization} </Text>
+           <Text>{new Date().toLocaleString()}</Text>
      </Block>
     </Block>
 
      <Block row>
-      <Button 
-              color='secondary' 
-              style={styles.button} >
-                Confirm
-      </Button>
-
-       <Button color='white' style={styles.button} >
-         <Text color={argonTheme.COLORS.SECONDARY}>
-           View
-         </Text>
-       </Button>
-
+       
+        <Button 
+        onPress={handleOnClick}
+       color='secondary' 
+       style={styles.button}
+        >View
+        </Button>
+   
         <Button color='white' style={styles.button} >
          <Text color={argonTheme.COLORS.SECONDARY}>
            Cancel
@@ -47,10 +43,6 @@ const AppointmentCard = ({fullName,farm,district,town,category}) => {
    </Block>
   )
 }
-
-
-
-
 
 export default AppointmentCard
 

@@ -40,9 +40,10 @@ import { getData } from '../user';
              title ="Veterinarians"
              />
           </Block>
+
           <ArticleCard  />
-           <ArticleCard  />
-            <ArticleCard  />
+          <ArticleCard  />
+          <ArticleCard  />
         </Block>
       </ScrollView>
       </Block>

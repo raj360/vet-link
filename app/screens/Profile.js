@@ -26,8 +26,6 @@ const  Profile = ({navigation,route})=>  {
 
   const [state,dispatch] =  useUserState();
     
-
-
     const  {user} = state;
 
     const {data,loading,error} = useQuery(USER,{variables:{id:user.id}})
@@ -41,8 +39,6 @@ const  Profile = ({navigation,route})=>  {
           alert(`Server can't be reached`);
         }
     },[data]);
-
-
 
     return (
       <Block flex style={styles.profile}>
@@ -72,18 +68,20 @@ const  Profile = ({navigation,route})=>  {
                     style={{ marginTop: 20, paddingBottom: 24 }}
                   >
                     <Button
+                      onPress = {()=> navigation.navigate('Appointments')}
                       small
                       style={{ backgroundColor: argonTheme.COLORS.SECONDARY }}
                     >
-                      Farms
+                      Appointents
                     </Button>
                     <Button
+                     onPress = {()=> navigation.navigate('Farms')}
                       small
                       color="white"
                       style={{color: argonTheme.COLORS.SECONDARY ,borderWidth:1,borderColor:argonTheme.COLORS.SECONDARY}}
                     >
                       <Text style={{color:argonTheme.COLORS.SECONDARY}} >
-                        chats
+                    Farms
                       </Text>
                     </Button>
 
@@ -93,7 +91,7 @@ const  Profile = ({navigation,route})=>  {
                       style={{color: argonTheme.COLORS.SECONDARY }}
                     >
                       <Text style={{color:argonTheme.COLORS.SECONDARY}} >
-                        sign out
+                         sign out
                       </Text>
                     </Button>
                   </Block>
@@ -120,17 +118,7 @@ const  Profile = ({navigation,route})=>  {
                       </Text>
                       <Text size={12} color={argonTheme.COLORS.TEXT}>Appointments</Text>
                     </Block>
-                    <Block middle>
-                      <Text
-                        bold
-                        color="#525F7F"
-                        size={18}
-                        style={{ marginBottom: 4 }}
-                      >
-                        0
-                      </Text>
-                      <Text size={12} color={argonTheme.COLORS.TEXT}>Messages</Text>
-                    </Block>
+              
                   </Block>
                 </Block>
                 <Block flex>

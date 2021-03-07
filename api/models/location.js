@@ -10,11 +10,11 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     longitude: {
-      type: DataTypes.DECIMAL(10,4),
+      type: DataTypes.DECIMAL(10,6),
       allowNull: true
     },
     latitude: {
-      type: DataTypes.DECIMAL(10,4),
+      type: DataTypes.DECIMAL(10,6),
       allowNull: true
     },
     veterinarianId: {
@@ -24,6 +24,14 @@ module.exports = function(sequelize, DataTypes) {
         model: 'veterinarian',
         key: 'id'
       }
+    },
+    district: {
+      type: DataTypes.STRING(20),
+      allowNull: true
+    },
+    town: {
+      type: DataTypes.STRING(20),
+      allowNull: true
     }
   }, {
     sequelize,

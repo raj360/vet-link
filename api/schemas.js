@@ -10,8 +10,6 @@ module.exports = gql`
    getFarmer(id:Int!):Farmer!,
  }
 
-
-
   type Mutation{
   name:String,
   singleUpload(file:Upload):String!,
@@ -26,6 +24,7 @@ module.exports = gql`
   createAppointment(farmerId:Int!,veterinarianId:Int!):Response!
   updateAppointment(id:Int!,status:String!):Response!
 }
+
 
 type Response{
   error:Boolean!,
