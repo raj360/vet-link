@@ -1,6 +1,7 @@
 import {gql} from '@apollo/client';
 
 export const USER = gql`
+
 query getFarmer($id: Int!) {
   getFarmer(id: $id) {
     id
@@ -10,6 +11,8 @@ query getFarmer($id: Int!) {
     farms {
       id
       name
+      town
+       district
       latitude
       longitude
       type {
@@ -27,7 +30,10 @@ query getFarmer($id: Int!) {
         email
         fullName
         telephone
+         photo
         location {
+      	  district
+          town
           latitude
           longitude
         }

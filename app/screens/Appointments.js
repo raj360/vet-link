@@ -81,22 +81,20 @@ const appointments = [
     <Block flex middle style={{marginTop:'20%'}} >
           {
             appointments.map((appointment,index )=> 
-              (
+            (
             <AppointmentCard
             key={index}
             handleOnClick={()=> setModalVisible(!modalVisible)}
             fullName="Mutaasa William"
             status="Confirmed"
-            town="Kampala" 
-            district="Kampala"
-            specialization="Paultry Vet"
            />
-           ))
+            ))
           }
         </Block>
          <Block flex   >
           <Modal
-          style={{width:200, height:500}}
+          transparent={true}
+          style={{width:200, height:500,elevation:5}}
           animationType="fade"
           formSheet
           visible={modalVisible}
@@ -104,16 +102,17 @@ const appointments = [
          onRequestClose={() => {
           Alert.alert('Modal has been closed.');
         }}>
-        <Block flex  >
-          <Block flex center middle >
-          <Block flex={0.2} center >
+        <Block flex center middle>
+          <Block flex={0.6} style={{backgroundColor:argonTheme.COLORS.BG_COLOR,width:300,borderRadius:5}}  >
+          <Block flex middle >
+          <Block flex={-0.4}  >
             <Image
             source={{ uri: Images.ProfilePicture }}
             style={{width:100,height:100,borderRadius:50}}
             />
           </Block>
           
-          <Block flex={0.4} center >
+          <Block flex={0.8} center style={{marginTop:theme.SIZES.BASE}} >
            <Text size={20} bold>Profile</Text>
           <Text size={18} >Kalumba Raymond Joseph</Text>
           <Text size={16}>Paultry Veterineian</Text>
@@ -137,9 +136,10 @@ const appointments = [
                     <Text style={{color:argonTheme.COLORS.SECONDARY}} >
                     close
                     </Text>
-                    </Button>
+              </Button>
           </Block>
           
+        </Block>
         </Block>
         
       </Modal>

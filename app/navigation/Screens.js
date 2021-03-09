@@ -28,6 +28,7 @@ import CustomDrawerContent from "./Menu";
 // header for screens
 import { Icon, Header } from "../components";
 import { argonTheme, tabs } from "../constants";
+import Farms from "../screens/Farms";
 
 
 
@@ -176,7 +177,7 @@ function ProfileStack(props) {
 
        <Stack.Screen
         name="Farms"
-        component={Appointments}
+        component={Farms}
         options={{
           header: ({ navigation, scene }) => (
             <Header

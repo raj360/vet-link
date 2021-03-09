@@ -66,14 +66,17 @@ type Veterinarian{
  type Farm{
    id:Int!,
    name:String!,
+   town:String!,
+    district:String!,
   longitude:Float!,
   latitude:Float!,
-  district:String!,
   type:AnimalType
  }
 
  type Location{
   id:Int!,
+  town:String!
+  district:String!
   longitude:Float!,
   latitude:Float!,
  }

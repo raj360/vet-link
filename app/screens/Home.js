@@ -16,8 +16,6 @@ import { getData } from '../user';
       .catch(err => console.log(err))
     },[state]);
 
-
-
     return (
       <Block flex center style={styles.home}>
         <ScrollView

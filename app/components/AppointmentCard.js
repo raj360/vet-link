@@ -6,7 +6,7 @@ import {Images,argonTheme } from '../constants';
 import {Button} from '../components';
 const { width } = Dimensions.get("screen");
 
-const AppointmentCard = ({fullName,status,district,town,specialization,handleOnClick}) => {
+const AppointmentCard = ({fullName,status,handleOnClick}) => {
 
   const cardContainer = [styles.card, styles.shadow,styles.container]
   return (
@@ -18,8 +18,6 @@ const AppointmentCard = ({fullName,status,district,town,specialization,handleOnC
      <Block flex style={{marginLeft:'10%'}}>
         <Text h6 bold>{fullName}</Text>
          <Text color={argonTheme.COLORS.PLACEHOLDER}> {status} </Text>
-           <Text>{district} - {town} </Text>
-           <Text>{specialization} </Text>
            <Text>{new Date().toLocaleString()}</Text>
      </Block>
     </Block>

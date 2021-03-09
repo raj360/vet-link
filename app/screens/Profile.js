@@ -40,6 +40,7 @@ const  Profile = ({navigation,route})=>  {
         }
     },[data]);
 
+    
     return (
       <Block flex style={styles.profile}>
         <Block flex>
