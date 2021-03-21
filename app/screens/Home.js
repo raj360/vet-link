@@ -1,6 +1,6 @@
 import React,{useContext} from 'react';
 import { StyleSheet, Dimensions, ScrollView,TouchableWithoutFeedback } from 'react-native';
-import { Block, theme } from 'galio-framework';
+import { Block, theme,Text } from 'galio-framework';
 import { ArticleCard, Card } from '../components';
 import HomeHeader from '../components/HomeHeader';
 const { width } = Dimensions.get('screen');
@@ -12,8 +12,14 @@ import { getData } from '../user';
   const [state,dispatch] =  useUserState();
   
     React.useEffect(()=> {
-       getData('USER_DATA').then(user =>  dispatch(Actions.saveUser(user)))
-      .catch(err => console.log(err))
+       getData('USER_DATA').then(user =>  {
+         if(user){
+           dispatch(Actions.saveUser(user))
+         }else{
+           navigation.navigate('SignIn')
+         }
+       })
+      .catch(err => console.log(err) )
     },[state]);
 
     return (
@@ -26,22 +32,20 @@ import { getData } from '../user';
         <Block  flex>
           <Block flex row>
              <HomeHeader 
-             handleSelectedItem={()=>navigation.navigate('Profile',)}
+             handleSelectedItem={()=>navigation.navigate('Profile')}
              image={Images.NoteIcon}
              title = "Profile"
              />
-
-
              <HomeHeader
              handleSelectedItem={()=>navigation.navigate('Find Vet',)}
              image={Images.Veterinarian}
              title ="Veterinarians"
              />
           </Block>
-
-          <ArticleCard  />
-          <ArticleCard  />
-          <ArticleCard  />
+          <Text bold>Articles</Text>
+          <ArticleCard image={Images.newcastle_disease} title ="NEWCASTLE is an infection of domestic poultry ..."  />
+          <ArticleCard image={Images.cocidiosis} title="Coccidiosis is a parasitic disease of the intesti..."   />
+          <ArticleCard image={Images.fowl_typhoid} title="Folw typhoid (FT) and pullorum disease (PD) ar..."  />
         </Block>
       </ScrollView>
       </Block>

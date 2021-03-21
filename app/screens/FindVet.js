@@ -1,9 +1,12 @@
 //import liraries
 import React, { Component,useState,useEffect } from 'react';
 import {usePermissions} from 'expo'
-import { View, Text, StyleSheet,Dimensions } from 'react-native';
-import MapView , {Marker,PROVIDER_GOOGLE}from 'react-native-maps';
+import { View, StyleSheet,Dimensions } from 'react-native';
+import MapView , {Marker,PROVIDER_GOOGLE,LocalTile,}from 'react-native-maps';
 import * as  Permissions from 'expo-permissions';
+import {Block,Text} from 'galio-framework';
+import {Images, argonTheme} from '../constants';
+import useUserState from '../context/UserContext';
 
 
 const {width, height} = Dimensions.get('window')
@@ -28,7 +31,9 @@ async function getLocationAsync() {
 
 const FindVet = (props) => {
   let map = React.createRef();
+   const [state,dispatch] = useUserState();
 
+   console.log(state)
 
   const [region, setRegion] = useState({
     latitude: 0.3565617,
@@ -78,8 +83,11 @@ const FindVet = (props) => {
           initialRegion={region}
           >
           <Marker 
-          title="Current location"
+          image={Images.farmer_map_icon}
+          title={state.user.fullName}
           coordinate={region} />
+
+          
         </MapView>
     </View>
   );

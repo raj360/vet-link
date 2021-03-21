@@ -55,7 +55,7 @@ class DrawerItem extends React.Component {
             color={focused ? "white" : argonTheme.COLORS.SECONDARY}
           />
         );
-      case "Find Vet":
+      case "Find Farmer":
         return (
            <Fontisto
            name="doctor"

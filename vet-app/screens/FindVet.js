@@ -1,10 +1,10 @@
 //import liraries
 import React, { Component,useState,useEffect } from 'react';
 import {usePermissions} from 'expo'
-import { View, Text, StyleSheet,Dimensions } from 'react-native';
-import MapView , {Marker,PROVIDER_GOOGLE}from 'react-native-maps';
+import { View, StyleSheet,Dimensions,TouchableOpacity } from 'react-native';
+import MapView , {Marker,PROVIDER_GOOGLE,LocalTile}from 'react-native-maps';
 import * as  Permissions from 'expo-permissions';
-
+import {Block,Text} from 'galio-framework'
 
 const {width, height} = Dimensions.get('window')
 
@@ -24,7 +24,6 @@ async function getLocationAsync() {
     throw new Error('Location permission not granted');
   }
 }
-
 
 const FindVet = () => {
   let map = React.createRef();
@@ -80,6 +79,11 @@ const FindVet = () => {
           title="Current location"
           coordinate={region} />
         </MapView>
+        <TouchableOpacity style={styles.overlay}>
+        <Block>
+          <Text style={styles.text}>Touchable Opacity</Text>
+        </Block>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -95,6 +99,11 @@ const styles = StyleSheet.create({
   map: {
         ...StyleSheet.absoluteFillObject,
       },
+      overlay: {
+    position: 'absolute',
+    bottom: 50,
+    backgroundColor: 'rgba(255, 255, 255, 1)',
+  },
 });
 
 //make this component available to the app

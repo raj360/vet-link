@@ -45,10 +45,11 @@ class Profile extends React.Component {
                     center
                     row
                     space="between"
-                    style={{ marginTop: 20, paddingBottom: 24 }}
+                    style={{ marginTop: 20, paddingBottom: 24, }}
                   >
                     <Button
                      center
+                     small
                     style={styles.button}
                     >
                       Appointments
@@ -58,7 +59,8 @@ class Profile extends React.Component {
                     <Button
                     center
                     color="white"
-                    style={{ borderWidth:1,borderColor:argonTheme.COLORS.SECONDARY,width:100}}
+                    small
+                    style={{ borderWidth:1,borderColor:argonTheme.COLORS.SECONDARY,width:90}}
                     >
                       <Text 
                       style={{color:argonTheme.COLORS.SECONDARY}}
@@ -68,6 +70,7 @@ class Profile extends React.Component {
                     </Button>
 
                     <Button
+                    small
                     center
                     color="white"
                     style={{width:100}}
@@ -113,10 +116,10 @@ class Profile extends React.Component {
                 <Block flex>
                   <Block middle style={styles.nameInfo}>
                     <Text bold size={28} color={argonTheme.COLORS.FONTS}>
-                      Raymond Kalumba 
+                      Ngoyi Nasimwe
                     </Text>
                     <Text size={16} color={argonTheme.COLORS.FONTS} style={{ marginTop: 10 }}>
-                      raymondkalumba360@yahoo.com
+                      ngoysimwe@yahoo.com
                     </Text>
                   </Block>
                   <Block middle style={{ marginTop: 30, marginBottom: 16 }}>
@@ -214,7 +217,8 @@ const styles = StyleSheet.create({
     width: 124,
     height: 124,
     borderRadius: 62,
-    borderWidth: 0
+    borderWidth: 0,
+    marginTop:10
   },
   nameInfo: {
     marginTop: 35
@@ -233,7 +237,7 @@ const styles = StyleSheet.create({
   },
   button:{
   backgroundColor: argonTheme.COLORS.SECONDARY,
-  width: 100,
+  width: 90,
   }
 });
 

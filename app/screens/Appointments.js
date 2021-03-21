@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import { ImageBackground, Image, StyleSheet, StatusBar, Dimensions, Platform, Linking,ScrollView,Modal,View,TouchableHighlight} from 'react-native';
 import { Block, Button, Text, theme } from 'galio-framework';
 
@@ -6,11 +6,13 @@ const { height, width } = Dimensions.get('screen');
 import { Images, argonTheme } from '../constants/';
 import { HeaderHeight } from "../constants/utils";
 import AppointmentCard from '../components/AppointmentCard';
+import useUserState from '../context/UserContext';
 
 
 const appointments = [
       {
-      fullName:'Raymond Kalumba',
+      fullName:'Christine Abbie',
+      imageUrl:'https://media.gettyimages.com/photos/surprised-black-baby-boy-sitting-on-floor-playing-with-books-picture-id707437915?k=6&m=707437915&s=612x612&w=0&h=hVqOhIgr4IoQbBuF1pG5EMMjLr0oddeiqaVZDcfEn3o=',
       location:{
         district:'Kampala',
         town:'Kasubi'
@@ -21,7 +23,8 @@ const appointments = [
       }
     },
     {
-      fullName:'Christine Abbie',
+      fullName:'Nyombi Victor',
+      imageUrl:'https://media.gettyimages.com/photos/smiling-male-gesturing-against-textured-wall-picture-id1193048797?k=6&m=1193048797&s=612x612&w=0&h=h-SRIq9vCvMi3-Qg1Qh4F6rzJyqmIdxvnu2Awj1iH7Y=',
       location:{
         district:'Kampala',
         town:'Kawaala'
@@ -33,6 +36,7 @@ const appointments = [
     },
     {
       fullName:'Peterson Alaba',
+      imageUrl:'https://media.gettyimages.com/photos/funny-portrait-of-surprised-nerdy-young-man-looking-up-picture-id996800682?k=6&m=996800682&s=612x612&w=0&h=m0N6jkQZtNV2q_gtQIuBZQC8YZzyrYSuz7n-kUKaPe0=',
       location:{
         district:'Gulu',
         town:'Nimule'
@@ -42,35 +46,40 @@ const appointments = [
         caregory:'Paultry'
       }
     },
-    {
-      fullName:'Judi Ainembabazi',
-      location:{
-        district:'Bushenyi',
-        town:'Kihura'
-      },
-      farm:{
-        name:'Oluvenda',
-        category:'LiveStock'
-      }
-    },
-    {
-      fullName:'Simon David',
-      location:{
-        district:'Wakiso',
-        town:'Nansana'
-      },
-      farm:{
-        name:'Trust God',
-        category:'LiveStock'
-      }
-    },
+   
+  
   
   ];
 
+  
+
 
  const  Appointments = (props) =>  {
-    
+    const [state,disptach] = useUserState()
     const [modalVisible, setModalVisible] = React.useState(false);
+    const [data,setData] = React.useState({
+      fullName:'',
+      telephon:'',
+      town:'',
+      district:'',
+      email:''
+
+   });
+
+    const handleDetails =(appointment) => {
+      console.log(appointment)
+          setData({...data,
+            fullName:appointment.vet.fullName,
+            telephone:appointment.vet.telephone,
+            town:appointment.vet.location.town,
+            district:appointment.vet.location.district,
+            imageUrl:appointment.vet.photo,
+            email:appointment.vet.email
+          })
+          setModalVisible(!modalVisible)
+    }
+
+  
     const { navigation } = props;
     return (
       <ScrollView
@@ -80,15 +89,22 @@ const appointments = [
 
     <Block flex middle style={{marginTop:'20%'}} >
           {
-            appointments.map((appointment,index )=> 
-            (
+           state.appointments.map((appointment,index )=> 
+           {
+
+  return (
+          (
             <AppointmentCard
             key={index}
-            handleOnClick={()=> setModalVisible(!modalVisible)}
-            fullName="Mutaasa William"
+            appointment = {appointment}
+            handleOnClick={()=> handleDetails(appointment)}
+            fullName={appointment.fullName}
             status="Confirmed"
+            imageUrl={state.baseUrl+appointment.vet.photo}
            />
             ))
+
+           })
           }
         </Block>
          <Block flex   >
@@ -107,21 +123,21 @@ const appointments = [
           <Block flex middle >
           <Block flex={-0.4}  >
             <Image
-            source={{ uri: Images.ProfilePicture }}
+            source={{ uri: state.baseUrl+data.imageUrl }}
             style={{width:100,height:100,borderRadius:50}}
             />
           </Block>
           
           <Block flex={0.8} center style={{marginTop:theme.SIZES.BASE}} >
            <Text size={20} bold>Profile</Text>
-          <Text size={18} >Kalumba Raymond Joseph</Text>
+          <Text size={18} >{data.fullName}</Text>
           <Text size={16}>Paultry Veterineian</Text>
 
-
           <Text size={18} bold>Address</Text>
-          <Text size={16}>0787292442</Text>
-          <Text size={16}>Kampala</Text>
-          <Text size={14}>Makerere</Text>
+          <Text size={16}>{data.email}</Text>
+          <Text size={16}>{data.telephone}</Text>
+          <Text size={16}>{data.district}</Text>
+          <Text size={14}>{data.town}</Text>
           </Block>
 
           </Block >

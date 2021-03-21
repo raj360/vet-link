@@ -31,10 +31,10 @@ const SignUp = (props) => {
                     enabled
                   >
                      <Block flex={0} middle>
-                    <Image
+                    {/* <Image
                     source={{ uri: Images.ProfilePicture }}
                     style={styles.avatar}
-                    />
+                    /> */}
                      </Block>
                     <Block width={width * 0.8} style={{ marginBottom: 15 }}>
                       <Input

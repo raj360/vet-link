@@ -1,14 +1,13 @@
 import React, {useState} from "react";
 import { Image } from "react-native";
 import AppLoading from 'expo-app-loading';
-
 import { useFonts } from '@use-expo/font';
 import { Asset } from "expo-asset";
 import { Block, GalioProvider } from "galio-framework";
 import { NavigationContainer } from "@react-navigation/native";
-
+import { ApolloClient, InMemoryCache, ApolloProvider ,HttpLink} from '@apollo/client';
 // const {latitude,longitude} = coords;
-
+import { UserProvider } from "./context/UserContext";
 // Before rendering any navigation stack
 import { enableScreens } from "react-native-screens";
 enableScreens();
@@ -17,7 +16,12 @@ enableScreens();
 import Screens from "./navigation/Screens";
 import { Images, articles, argonTheme } from "./constants";
 
+const link = new HttpLink({ uri: 'http://192.168.43.36:4000/vet-link/api/v1' });
 
+const client = new ApolloClient({
+  link,
+  cache:new InMemoryCache()
+});
 
 // cache app images
 const assetImages = [
@@ -29,7 +33,6 @@ const assetImages = [
   Images.iOSLogo,
   Images.androidLogo
 ];
-
 // cache product images
 articles.map(article => assetImages.push(article.image));
 
@@ -75,7 +78,11 @@ export default props => {
       <NavigationContainer>
         <GalioProvider theme={argonTheme}>
           <Block flex>
-            <Screens />
+            <ApolloProvider client={client}>
+              <UserProvider>
+                <Screens/>
+              </UserProvider>
+           </ApolloProvider>
           </Block>
         </GalioProvider>
       </NavigationContainer>

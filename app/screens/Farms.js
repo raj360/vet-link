@@ -10,10 +10,6 @@ import useUserState,{Actions} from '../context/UserContext';
 const  Farms =  ({navigation}) => {
  const [state,dispatch] = useUserState();
 
-   React.useEffect(() => {
-      console.log(state.farms)
-   }, [state])
-
     return (
      <Block flex center>
     <ScrollView
@@ -65,7 +61,7 @@ const  Farms =  ({navigation}) => {
           <Block>
           {
             state.farms.map((farm,index) => (
-              <Block  row key={index} style={{backgroundColor:argonTheme.COLORS.BG_COLOR,elevation:3 }} >
+              <Block  row key={index} style={{backgroundColor:argonTheme.COLORS.BG_COLOR,elevation:3,padding:5,margin:3 }} >
                 <Text>{farm.name}</Text>
               </Block>
             ))

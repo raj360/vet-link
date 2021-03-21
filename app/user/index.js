@@ -10,8 +10,6 @@ export const storeData = async (value,key) => {
   }
 }
 
-
-
 export const getData = async (key) => {
   try {
     const jsonValue = await AsyncStorage.getItem(key)

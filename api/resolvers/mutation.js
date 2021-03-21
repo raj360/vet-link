@@ -125,7 +125,8 @@ farmerSignIn:async (parent,{telephone,password},{models}) => {
       return farmer;
 },
 vetSignIn:async (parent,{telephone,password},{models}) => {
-  
+
+
   const veterinarian = await models.veterinarian.findOne({where:{telephone,password}});
   if(!veterinarian){
   throw new AuthenticationError("telehone or password is unknown")

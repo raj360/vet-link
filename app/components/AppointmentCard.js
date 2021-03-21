@@ -6,24 +6,28 @@ import {Images,argonTheme } from '../constants';
 import {Button} from '../components';
 const { width } = Dimensions.get("screen");
 
-const AppointmentCard = ({fullName,status,handleOnClick}) => {
+const AppointmentCard = ({handleOnClick,appointment,imageUrl}) => {
 
-  const cardContainer = [styles.card, styles.shadow,styles.container]
+  const cardContainer = [styles.card, styles.shadow,styles.container];
+
+  const {vet,status} = appointment;
+
+
   return (
    <Block flex center  card style={cardContainer}>
     <Block flex row>
        <Block>
-       <Image style={styles.image}  source={Images.ProfileBackground}/>
+       <Image style={styles.image}  source={{uri:imageUrl}}/>
      </Block>
      <Block flex style={{marginLeft:'10%'}}>
-        <Text h6 bold>{fullName}</Text>
+        <Text h6 bold>{vet.fullName}</Text>
          <Text color={argonTheme.COLORS.PLACEHOLDER}> {status} </Text>
            <Text>{new Date().toLocaleString()}</Text>
      </Block>
     </Block>
 
      <Block row>
-       
+      
         <Button 
         onPress={handleOnClick}
        color='secondary' 
@@ -46,7 +50,8 @@ export default AppointmentCard
 
 const styles = StyleSheet.create({
   container:{
-    padding:10
+    padding:10,
+    marginLeft:10,
   },
   image:{
     width: 100,

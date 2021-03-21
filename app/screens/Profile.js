@@ -18,7 +18,6 @@ import FarmList from "../components/FarmList";
 import * as Permissions from 'expo-permissions';
 const { width, height } = Dimensions.get("screen");
 
-
 const thumbMeasure = (width - 48 - 32) / 3;
 
 const  Profile = ({navigation,route})=>  {
@@ -57,7 +56,7 @@ const  Profile = ({navigation,route})=>  {
                 <Block middle style={styles.avatarContainer}>
                   
                   <Image
-                    source={{ uri: `http://10.0.2.2:4000/${user.photo}`}}
+                    source={{ uri: `http://192.168.43.36:4000/${user.photo}`}}
                     style={styles.avatar}
                   />
                 </Block>
@@ -203,8 +202,9 @@ const styles = StyleSheet.create({
     marginTop: -80
   },
   avatar: {
-    width: 124,
-    height: 124,
+    marginTop:10,
+    width: 100,
+    height: 100,
     borderRadius: 62,
     borderWidth: 0
   },

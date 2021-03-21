@@ -343,7 +343,7 @@ function AppStack(props) {
       <Drawer.Screen name="Home" component={HomeStack} />
       <Drawer.Screen name="Articles" component={ArticlesStack} />
       <Drawer.Screen name="Chat" component={ChatStack} />
-      <Drawer.Screen name="Find Vet" component={MapViewStack} />
+      <Drawer.Screen name="Find Farmer" component={MapViewStack} />
       <Drawer.Screen name="Profile" component={ProfileStack} />
       <Drawer.Screen name="Account" component={Register} />
       <Drawer.Screen name="SignIn" component={SignIn} />

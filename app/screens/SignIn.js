@@ -1,13 +1,10 @@
 import React from 'react'
 import { StyleSheet,
-   View ,
-  ImageBackground,
   Dimensions,
   StatusBar,
   Image,
   KeyboardAvoidingView
 } from 'react-native';
-
 
 import {useMutation} from '@apollo/client';
 
@@ -19,22 +16,27 @@ import { SIGN_USER } from '../graphql/mutation';
 import { storeData } from '../user/index';
 
 const {width,height} = Dimensions.get("screen");
+
+
+
+
 const SignIn = (props) => {
 
+  
+  
   const {navigation} = props;
 
   const [values,setValues] = React.useState({});
-
-   console.log(Object.values(values))
 
   const [farmerSignIn,{loading,error}] = useMutation(SIGN_USER,{
     onCompleted:data => {
         storeData(data.farmerSignIn,'USER_DATA').then(()=> navigation.navigate('Home') )
     },
-    onError:()=> {
+    onError:(er)=> {
      alert('Telephon or passowrd is Unknown')
     }
-  })
+  });
+
 
 
   const handleSubmit = ()=> {
@@ -83,7 +85,7 @@ const SignIn = (props) => {
                       <Input
                         password
                         borderless
-                             handleOnChange={input => setValues({...values,password:input})}
+                        handleOnChange={input => setValues({...values,password:input})}
                         placeholder="Password"
                         iconContent={
                           <Icon
@@ -134,7 +136,6 @@ export default SignIn
 
 const styles = StyleSheet.create({
   registerContainer: {
-  
     width: width * 0.9,
     height: height * 0.78,
     backgroundColor: "#F4F5F7",

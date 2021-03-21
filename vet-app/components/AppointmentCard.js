@@ -4,9 +4,15 @@ import { Block,Text, theme} from 'galio-framework';
 import {ProfilePicture} from '../constants/Images';
 import {Images,argonTheme } from '../constants';
 import {Button} from '../components';
+import useUserState from '../context/UserContext';
 const { width } = Dimensions.get("screen");
 
-const AppointmentCard = ({fullName,farm,district,town,category}) => {
+
+const AppointmentCard = ({fullName,farm,district,town,category,image}) => {
+
+   const [state,dispatch] = useUserState();
+
+   console.log(image)
 
   const cardContainer = [styles.card, styles.shadow,styles.container]
 
@@ -14,7 +20,7 @@ const AppointmentCard = ({fullName,farm,district,town,category}) => {
    <Block flex  card style={cardContainer}>
     <Block flex row >
        <Block>
-       <Image style={styles.image}  source={Images.ProfileBackground}/>
+       <Image style={styles.image}  source={{uri:state.baseUrl + image}}/>
      </Block>
      <Block flex style={{marginLeft:'10%'}}>
         <Text h6 bold>{fullName}</Text>
@@ -56,7 +62,9 @@ export default AppointmentCard
 
 const styles = StyleSheet.create({
   container:{
-    padding:10
+    padding:15,
+    marginLeft:-10
+
   },
   image:{
     width: 100,
@@ -85,7 +93,7 @@ const styles = StyleSheet.create({
     marginBottom: theme.SIZES.BASE,
     width: 100,
     borderWidth:2,
-     borderColor:argonTheme.COLORS.SECONDARY,
+   borderColor:argonTheme.COLORS.SECONDARY,
   
   }
 })

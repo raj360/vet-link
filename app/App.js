@@ -5,10 +5,20 @@ import { useFonts } from '@use-expo/font';
 import { Asset } from "expo-asset";
 import { Block, GalioProvider } from "galio-framework";
 import { NavigationContainer } from "@react-navigation/native";
-import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
+import { ApolloClient, InMemoryCache, ApolloProvider ,HttpLink} from '@apollo/client';
 //http://10.0.2.2:4000
+//http://192.168.0.127:4000
+//http://192.168.43.36
+/* 
+
+const link = new HttpLink({ uri: 'http://127.0.0.1:3500/graphql' });
+
+*/
+
+const link = new HttpLink({ uri: 'http://192.168.43.36:4000/vet-link/api/v1' });
+
 const client = new ApolloClient({
-  uri:'http://10.0.2.2:4000/vet-link/api/v1',
+  link,
   cache:new InMemoryCache()
 });
 

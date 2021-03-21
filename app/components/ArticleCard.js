@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 
 // create a component
 const ArticleCard = (props) => {
-    const { navigation, item, horizontal, full, style, ctaColor, imageStyle,image } = props;
+    const { navigation, item, horizontal, full, style, ctaColor, imageStyle,image,title } = props;
 
     const imageStyles = [
       full ? styles.fullImage : styles.horizontalImage,
@@ -27,13 +27,13 @@ const ArticleCard = (props) => {
 <Block row={horizontal} card flex style={cardContainer}>
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Pro')}>
           <Block flex style={imgContainer}>
-            <Image source={Images.ProfileBackground} style={imageStyles} />
+            <Image source={image} style={imageStyles} />
           </Block>
         </TouchableWithoutFeedback>
         <TouchableWithoutFeedback onPress={() => navigation.navigate('Pro')}>
           <Block flex space="between" style={styles.cardDescription}>
-            <Text size={14} style={styles.cardTitle}>{'Title'}</Text>
-            <Text size={12} muted={!ctaColor} color={ctaColor || argonTheme.COLORS.ACTIVE} bold>{'Simple description'}</Text>
+            <Text size={14} style={styles.cardTitle}>{title}</Text>
+            <Text size={12} muted={!ctaColor} color={ctaColor || argonTheme.COLORS.ACTIVE} bold>{'MORE'}</Text>
           </Block>
         </TouchableWithoutFeedback>
       </Block>

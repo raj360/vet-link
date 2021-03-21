@@ -14,9 +14,10 @@ class Home extends React.Component {
     const appointments = [
       {
       fullName:'Raymond Kalumba',
+      imageUrl:'1608988486351-118393305_1728470173987955_4070192248107557153_o.jpg',
       location:{
         district:'Kampala',
-        town:'Kasubi'
+        town:'Kasubi',
       },
       farm:{
         name:'Kibiti',
@@ -24,7 +25,8 @@ class Home extends React.Component {
       }
     },
     {
-      fullName:'Christine Abbie',
+      fullName:'Nyombi Victor',
+      imageUrl:'1608986266942-106577129_1674012229433750_4694060902631707762_o.jpg',
       location:{
         district:'Kampala',
         town:'Kawaala'
@@ -36,6 +38,7 @@ class Home extends React.Component {
     },
     {
       fullName:'Peterson Alaba',
+      imageUrl:'1608988486351-118393305_1728470173987955_4070192248107557153_o.jpg',
       location:{
         district:'Gulu',
         town:'Nimule'
@@ -45,35 +48,13 @@ class Home extends React.Component {
         caregory:'Paultry'
       }
     },
-    {
-      fullName:'Judi Ainembabazi',
-      location:{
-        district:'Bushenyi',
-        town:'Kihura'
-      },
-      farm:{
-        name:'Oluvenda',
-        category:'LiveStock'
-      }
-    },
-    {
-      fullName:'Simon David',
-      location:{
-        district:'Wakiso',
-        town:'Nansana'
-      },
-      farm:{
-        name:'Trust God',
-        category:'LiveStock'
-      }
-    },
-  
   ];
     return (
       <ScrollView
         style={styles.container}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={styles.articles}>
+        contentContainerStyle={styles.articles}
+        >
         
         <Block  flex>
           <Block flex row>
@@ -88,13 +69,13 @@ class Home extends React.Component {
             {/* <Card item={articles[1]} style={{ marginRight: theme.SIZES.BASE }} />
             <Card item={articles[2]} /> */}
           </Block>
-          {/* <Card item={articles[3]} horizontal />
-          <Card item={articles[4]} full /> */}
+        
           <Text bold >Appointments</Text>
            {
              appointments.map(((appointment,index) => (
                 <AppointmentCard
                 key = {index}
+                image ={appointment.imageUrl}
                 fullName = {appointment.fullName}
                 farm={appointment.farm.name}
                 district={appointment.location.district}

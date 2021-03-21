@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "VetLink for farmers",
-    "slug": "for vets",
+    "name": "VetLink for Veterinarians",
+    "slug": "veterinarians",
     "privacy": "public",
     "platforms": [
       "ios",

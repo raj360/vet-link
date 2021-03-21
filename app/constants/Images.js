@@ -10,8 +10,14 @@ const iOSLogo = require("../assets/images/ios.png");
 const androidLogo = require("../assets/images/android.png");
 const NoteIcon = require("../assets/notes.png");
 const Veterinarian = require("../assets/veterinary.png");
-// internet images
+const vet_map_icon = require("../assets/vet.png");
+const farmer_map_icon = require("../assets/farm.png");
+const icon_small = require("../assets/icon_small.png");
+const newcastle_disease = require('../assets/newcastle_disease_in_poutry.jpg');
+const cocidiosis = require('../assets/coccidiosis.jpeg');
+const fowl_typhoid = require('../assets/fowl_tyhoid.jpeg');
 
+// internet images
 const ProfilePicture = 'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?fit=crop&w=1650&q=80';
 
 const Viewed = [
@@ -28,6 +34,9 @@ const Products = {
 };
 
 export default {
+  vet_map_icon,
+  icon_small,
+  farmer_map_icon,
   Onboarding,
   Logo,
   LogoOnboarding,
@@ -41,5 +50,8 @@ export default {
   iOSLogo,
   androidLogo,
   NoteIcon,
-  Veterinarian
+  Veterinarian,
+  newcastle_disease,
+  cocidiosis,
+  fowl_typhoid
 };
